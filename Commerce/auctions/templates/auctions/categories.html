@@ -1,0 +1,29 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <br>
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center mx-2 mb-5">
+
+        <!-- Title -->
+        <h2 class="card-title h2">CATEGORIES</h2>
+        
+        
+        <br> <br>
+        <!-- Grid row -->
+        <div class="row d-flex justify-content-center">
+            <!-- Grid column -->
+            <div class="col-xl-7 pb-2">
+                {% for categoria in categorias %}
+                <ul class="list-group">
+                    <a href="{% url 'category' '{{categoria}}' %}"><li class="list-group-item"> {{categoria}}</li></a>
+                    
+                </ul>
+                {% endfor %}
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+    </div>
+    <!-- Jumbotron -->
+{% endblock %}

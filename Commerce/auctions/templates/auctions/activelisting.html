@@ -1,0 +1,42 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <br>
+    {% if message %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endif %}
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center">
+        <!-- Title -->
+        
+        <!-- Grid row -->
+        <div class="row d-flex justify-content-center">
+            <!-- Grid column -->
+            <div class="col-xl-7 pb-2">
+                {% if empty %}
+                
+                    <h3>No Active Listings available</h3>
+                {% else %}
+                <h2 class="card-title h2">ACTIVE LISTINGS</h2> <br>
+                    {% for product in products%}
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{product.image_link}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title"><strong>{{product.title}}</strong></h5>
+                              <p class="font-weight-bold indigo-text py-2">{{product.category}}</p>
+                              <p class="lead">Seller : {{product.seller}} <br> </p>
+                              <p class="card-text">{{product.description}}</p>
+                              <a href="{% url 'viewlisting' product.id %}" class="btn btn-primary">View details</a>
+                              <div class="card-footer text-muted text-center">
+                                {{product.created_at}}
+                            </div>
+                            </div>
+                          </div>
+                        
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+{% endblock %}
